@@ -1,8 +1,0 @@
-"0","# ""Merge table one and table two by column 'Borehole'"
-"0",""
-"0","owelltables <- merge(owellMetals, owellChems,by=""Borehole"")"
-"0",""
-"0","# ""Merge 'owelltables' and 'WellsLocationTable' by 'Borehole'"
-"0",""
-"0","finalTable <- merge(owelltables,wellsLocationTable, by = ""Borehole"")"
-"0","#finalTable"

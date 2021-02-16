@@ -1,7 +1,0 @@
-"0","# create a list with dataframes"
-"0",""
-"0","list1 = list(owellChems,owellMetals)"
-"0","names(list1) =c(""wells$saudi$chemistry"",""wells$saudi$metals"")"
-"0","list1"
-"1","$`wells$saudi$chemistry`
-"
