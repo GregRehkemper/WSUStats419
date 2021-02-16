@@ -7,7 +7,7 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 ```{r}
-which.github ="remote"
+which.github ="local"
 github.local = "C:/git/GregRehkemper/WSUStats419/"
 github.remote = "https://github.com/GregRehkemper/WSUStats419/tree/HEAD/"
 
@@ -87,10 +87,7 @@ storeToPipe = function(df, file, header=TRUE, quote="", sep="|", row.names=FALSE
   utils::write.table(df, file=file, quote=quote, col.names=header, row.names=row.names, sep=sep);
   }
 
-readFromPipe = function(file, header=TRUE, quote="", sep="|")
-  {
-  utils::read.csv(file, header=header, quote=quote, sep=sep);
-}
+
 ```
 #save datalist to file, r cannot coerce function into dataframe.
 
@@ -99,12 +96,14 @@ readFromPipe = function(file, header=TRUE, quote="", sep="|")
 
 if (which.github !="remote")
 {
-myfile = paste0(mypath,"well.rds")
-saveRDS(list1,file = myfile)
-myfile = paste0(mypath,"well.txt")
-#storeToPipe(list1,file = myfile)
-} else{
+  myfile = paste0(mypath,"well.rds")
+  saveRDS(list1,file = myfile)
   myfile = paste0(mypath,"well.txt")
+  storeToPipe(list1,file = myfile)
+} else{
+  
+  myfile = paste0(mypath,"well.txt")
+  
 }
 ```
 
