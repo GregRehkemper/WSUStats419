@@ -1,0 +1,96 @@
+---
+title: "O-well RMD2"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+```{r}
+# install packages
+# install.packages("corrplot")
+# install.packages("RcolorBrewer")
+# intall.packages("Rtools")
+# install.packages("devtools")
+# devtools::install_github("taiyun/corrplot", build_vignettes = TRUE
+
+```
+
+```{r}
+which.github ="local"
+github.local = "C:/git/GregRehkemper/WSUStats419/o-well/"
+github.remote = "https://github.com/GregRehkemper/WSUStats419/tree/HEAD/"
+
+if (which.github =="remote")
+{
+  mypath = github.remote
+ 
+}else
+  {
+  mypath = github.local
+  }
+
+mypath
+
+
+#local_owell_Table <- read.delim("C:/git/GregRehkemper/WSUStats419/o-well/owellTableClean.csv", sep = ",",header = T)
+```
+
+
+```{r}
+# Read in OWell dataframe, cleaned offline and reuploaded, to begin manipulation
+
+library(readxl)
+
+rawTable <- read.csv("owellTableClean.csv",header = T)
+
+#rawTable
+```
+
+
+```{r}
+# Checking data to ensure proper importation. This was left to show the process, not for final report
+
+
+#colnames (rawTable)
+# head(rawTable)
+#tail(rawTable)
+
+# columns are properly aligned, Data appears to be complete
+
+
+```
+
+
+```{r}
+#Starting by looking into the distance from the Fault lines
+# library(corrplot)
+# library(RColorBrewer)
+
+
+plot(rawTable$fault)
+
+#comparedf(rawTable.fault, rawtable)
+
+faults <- (rawTable$fault)
+par(mfrow=c(2,2))
+plot(faults, rawTable$pH, main = "PH change over distance from Fault",ylab = "Ph", type = "h", col = "red")
+
+plot(faults, rawTable$altitude.ft, main = "Altitude change over distance from Fault",ylab = "Alt", type = "h", col = "red")
+
+plot(rawTable$altitude.ft, rawTable$pH, main = "Ph Related to Altitude", xlab = "PH", ylab ="Altitude", type = "h")
+
+
+# #Compare(rawTable$altitude.ft, rawTable$pH)
+# corFaults <- rawFault <- rawTable$fault
+# 
+# rawTableMatrix <- matrix(c(rawTable))
+# corrplot(rawTableMatrix) #, type = "upper", order = "hclust", col = brewer.pal(n = 8, name= "RdYlBu"))
+# 
+# 
+# 
+# #with(rawTable, plot(rawTable$altitude.ft,rawTable$B))
+
+```
+```
+
