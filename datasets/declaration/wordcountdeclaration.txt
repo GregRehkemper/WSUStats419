@@ -1,55 +1,9 @@
 draft.count<-str_count(draft,letters)
 final.count<-str_count(final,letters)
-#draft.other<-str(draft,".")
-#draft.count
-#draft.other
-draft.periods<-str_count(draft,".")
-draft.comma<- str_count(draft,",")
-draft.quote<- str_count(draft,'"')
-draft.colon<-str_count(draft,':')
-draft.semi<-str_count(draft,';')
-#draft.semi
-#draft.colon
-#draft.quote
-#draft.comma
-#Combine spectial characters
-draft.other = draft.comma +draft.periods+draft.quote+draft.colon+draft.semi
 
-
-#create a table of the othersfrom draft
-draft.otherTable<- matrix(draft.other,1,1)
-
-#create a table of the letters from draft
-draft.table<- matrix(draft.count,26,1)
-
-#combine the tables
-draft.ComboTable<- rbind(draft.table,draft.otherTable)
-rownames (draft.ComboTable)<-c(letters, "OTHER")
-#rownames(draft.table)<- c(letters)
-#colnames(draft.table)<- c("a-z")
-#draft.table
-#draft.ComboTable
-
-#find Other count for final
-final.periods<-str_count(final,".")
-final.comma<- str_count(final,",")
-final.quote<- str_count(final,'"')
-final.colon<-str_count(final,':')
-final.semi<-str_count(final,';')
-final.other = final.colon+final.quote+final.comma+final.periods+final.semi
-#final.other
-#final.count
-final.table<-matrix(final.count,26,1)
-final.otherTable<- matrix(final.other,1,1)
-#final.table
-#final.otherTable
-
-#combine final tables
-final.ComboTable<-rbind(final.table, final.otherTable)
-#final.ComboTable
-
-#Add column to a single table
-finalDraftComboTable<-cbind(draft.ComboTable,final.ComboTable)
-
-#naming the columns
-colnames(finalDraftComboTable)<- c("Draft","Final")
+draft.table <- matrix(draft.count, 26,1)
+final.table <- matrix(final.count,26,1)
+rownames(final.table) <- c(letters)
+rownames(draft.table) <- c(letters)
+combined.table<- cbind(final.table, draft.table)
+colnames(combined.table)<- c("Draft","Final")
